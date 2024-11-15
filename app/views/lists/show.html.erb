@@ -8,9 +8,12 @@
 
 <div>
   <% @list.bookmarks.each_with_index do |bookmark,index| %>
-    <h2><%= bookmark.movie.title %></h2>
-    <p><%= bookmark.comment %></p>
+    <div class="movie-poster" style="background-image:  url(<%= bookmark.movie.poster_url %>)">
 
+
+      <h2><%= bookmark.movie.title %></h2>
+      <p><%= bookmark.comment %></p>
+    </div>
     <%= link_to "Delete Bookmark", bookmark_path(bookmark), data: { turbo_method: :delete, turbo_confirm: 'Destroy?'} %>
   <% end %>
 </div>

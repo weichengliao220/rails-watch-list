@@ -1,7 +1,16 @@
 <div>
   <h1>All Lists</h1>
   <% @lists.each do |list| %>
-    <p><%= link_to list.name, list_path(list) %></p>
+    <div class="card-category">
+      <p><%= link_to list.name, list_path(list) %></p>
+      <% if list.photo.attached? %>
+        <%= cl_image_tag list.photo.key %>
+      <% else %>
+        <%= image_tag 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPQDYau3Hs4-xw1i8jVSUY4BlF4FLmg8lQqg&usqp=CAU' %>
+      <% end %>
+      <%# <%= cl_image_tag list.photo.key, width: 400, height: 300, crop: :fill %>
+    </div>
+
   <% end %>
 
   <p><%= link_to "Create a new list", new_list_path %></p>
